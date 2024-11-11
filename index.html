@@ -40,85 +40,121 @@
             </div>
 
             <div class="accordion" data-testid="3">
-            <div class="title-section">
-                <div class="title">Bannerghatta Biological Park</div>
-                <div class="expand-icon"></div>
-                <div class="collapse-icon"></div>
+                <div class="title-section">
+                    <div class="title">Bannerghatta Biological Park</div>
+                    <div class="expand-icon"></div>
+                    <div class="collapse-icon"></div>
+                </div>
+                <div class="description">
+                    Vast national reserve featuring a zoo, safari park, butterfly conservatory & animal rescue center.
+                </div>
             </div>
-            <div class="description">
-                Vast national reserve featuring a zoo, safari park, butterfly conservatory & animal rescue center.
-            </div>
-        </div>
 
-        <div class="accordion" data-testid="4">
-            <div class="title-section">
-                <div class="title">Dodda Alada Mara</div>
-                <div class="expand-icon"></div>
-                <div class="collapse-icon"></div>
+            <div class="accordion" data-testid="4">
+                <div class="title-section">
+                    <div class="title">Dodda Alada Mara</div>
+                    <div class="expand-icon"></div>
+                    <div class="collapse-icon"></div>
+                </div>
+                <div class="description">
+                    Planted in the 17th century, this 400-year-old banyan tree covers 3 acres & is a popular photo spot.
+                </div>
             </div>
-            <div class="description">
-                Planted in the 17th century, this 400-year-old banyan tree covers 3 acres & is a popular photo spot.
-            </div>
-        </div>
 
-        <div class="accordion" data-testid="5">
-            <div class="title-section">
-                <div class="title">ISKCON Temple Bangalore</div>
-                <div class="expand-icon"></div>
-                <div class="collapse-icon"></div>
-            </div>
-            <div class="description">
-                Expansive, modern Hare Krishna temple campus, including shrines, food stalls & souvenir shops.
-            </div>
-        </div>
-    </div> 
-
-            <div class="multi-select">
-                <label>
-                    <input type="checkbox" class="checkbox" id="multiselect" data-testid="multiselect"> Multiple
-                </label>
+            <div class="accordion" data-testid="5">
+                <div class="title-section">
+                    <div class="title">ISKCON Temple Bangalore</div>
+                    <div class="expand-icon"></div>
+                    <div class="collapse-icon"></div>
+                </div>
+                <div class="description">
+                    Expansive, modern Hare Krishna temple campus, including shrines, food stalls & souvenir shops.
+                </div>
             </div>
         </div>
 
-        <script>
-            const accordion = document.querySelectorAll('.accordion')
-            const flechaAbajo = document.querySelectorAll('.expand-icon');
-            const flechaArriba = document.querySelectorAll('.collapse-icon')
-            console.log(accordion)
-            console.log(flechaAbajo)
-            
+        <div class="multi-select">
+            <label>
+                <input type="checkbox" class="checkbox" id="multiselect" data-testid="multiselect"> Multiple
+            </label>
+        </div>
+    </div>
 
-            flechaArriba.forEach((unaflecha, i) => {
-                flechaAbajo[0].classList.remove('expand-icon')
-                flechaArriba[i].classList.remove('collapse-icon')
-                
+    <script>
+        const accordion = document.querySelectorAll('.accordion')
+        const flechaAbajo = document.querySelectorAll('.expand-icon');
+        const flechaArriba = document.querySelectorAll('.collapse-icon')
+        console.log(accordion)
+        console.log(flechaAbajo)
+        const input = document.querySelector('.checkbox')
+        console.log(input.checked)
 
-                flechaArriba[i].addEventListener('click', function(){
-                    accordion[i].classList.remove('activo')
-                })
+        input.addEventListener('change', function () {
+            if (input.checked != true) {
+                alert('no checked')
+                flechaArriba.forEach((unaflecha, i) => {
+                    flechaAbajo[0].classList.remove('expand-icon')
+                    flechaArriba[i].classList.remove('collapse-icon')
 
-                flechaAbajo.forEach((unaFlecha, i) => {
-                    flechaAbajo[i].addEventListener('click', function () {
-                        accordion.forEach((elemAcordion, i) => {
-                            accordion[i].classList.remove('activo')
-                            flechaAbajo[i].classList.add('expand-icon')
-                            flechaArriba[i].classList.remove('collapse-icon')
+
+                    flechaArriba[i].addEventListener('click', function () {
+                        accordion[i].classList.remove('activo')
+                    })
+
+                    flechaAbajo.forEach((unaFlecha, i) => {
+                        flechaAbajo[i].addEventListener('click', function () {
+                            accordion.forEach((elemAcordion, i) => {
+                                accordion[i].classList.remove('activo')
+                                flechaAbajo[i].classList.add('expand-icon')
+                                flechaArriba[i].classList.remove('collapse-icon')
+                            })
+                            accordion[i].classList.add('activo')
+                            flechaAbajo[i].classList.remove('expand-icon')
+                            flechaArriba[i].classList.add('collapse-icon')
                         })
-                        accordion[i].classList.add('activo')
-                        flechaAbajo[i].classList.remove('expand-icon')
-                        flechaArriba[i].classList.add('collapse-icon')
+                    })//flechaabajo
+                })//flecha arriba
+
+            }else if (input.checked == true) {
+                alert('checked')
+                accordion.forEach((acor, i) => {
+
+
+                    flechaAbajo.forEach((flecha, i) => {
+                        flechaAbajo[0].classList.remove('expand-icon')
+
+
+                        flechaArriba.forEach((flecha, i) => {
+                            flechaArriba[0].classList.add('collapse-icon')
+
+                            flechaArriba[i].classList.remove('collapse-icon')
+
+                            flechaArriba[i].addEventListener('click', function () {
+                                accordion[i].classList.remove('activo')
+                                flechaAbajo[i].classList.add('expand-icon')
+                                flechaArriba[i].classList.remove('collapse-icon')
+                            })
+
+
+                            flechaAbajo[i].addEventListener('click', function () {
+                                accordion[i].classList.add('activo')
+                                flechaAbajo[i].classList.remove('expand-icon')
+                                flechaArriba[i].classList.add('collapse-icon')
+                            })
+
+                        })
+
 
                     })
-                })//flechaabajo
 
 
-            })
+                })//acordion
 
+            } 
+        })
+       
 
-
-
-
-        </script>
+    </script>
 </body>
 
 
