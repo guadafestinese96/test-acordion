@@ -33,7 +33,7 @@
     display: inline-block;
     height: 20px;
     width: 20px;
-    background-image: url('../assets/icons/down-icon.png');
+    background-image: url('../acordionTest/assets/icons/down-icon.png');
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
@@ -49,7 +49,7 @@
     display: inline-block;
     height: 20px;
     width: 20px;
-    background-image: url('../assets/icons/up-icon.png');
+    background-image: url('../acordionTest/assets/icons/up-icon.png');
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
@@ -58,7 +58,6 @@
     position: absolute;
     right: 5px;
     top: 5px;
-    
 }
 
 .hidden{
